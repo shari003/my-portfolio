@@ -23,7 +23,7 @@ export default function Home() {
         <div className='relative bg-slate-200'>
             <BlackScreen show={showBlackScreen} />
             <div className="min-h-screen">
-                <div className="max-w-7xl mx-auto">
+                <div className="max-w-7xl mx-auto relative">
                     <Navbar show={showNavbar} />
                 </div>
                 <Hero />
