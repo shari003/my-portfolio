@@ -40,7 +40,7 @@ export default function Navbar({show}: Props) {
         }
     ];
 
-    const blockVairants = {
+    const blockVariants = {
         initial: {y: -5, opacity: 0},
         falling: {y: 0, opacity: 1, transition: {duration: 0.3, ease: "easeInOut"}}
     }
@@ -80,7 +80,7 @@ export default function Navbar({show}: Props) {
                             ease: "easeInOut"
                         }}
                     >   
-                        <motion.div ref={hamburgerRef} className="block md:hidden relative">
+                        <motion.div variants={blockVariants} ref={hamburgerRef} className="block md:hidden relative">
                             <button onClick={handleClick} className="flex flex-col justify-center items-center">
                                 <span className={`bg-slate-700 block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`} >
                                 </span>
@@ -111,14 +111,14 @@ export default function Navbar({show}: Props) {
                                 </motion.div>
                             )}
                         </motion.div>
-                        <motion.div variants={blockVairants}>
+                        <motion.div variants={blockVariants}>
                             <Link href="/" className="font-medium hover:bg-slate-200 hover:text-slate-700 bg-slate-700 text-white transition-all duration-300 px-2 py-1 rounded-md outline-none">
                                 <span>/</span>
                                 <span>shrihari</span>
                                 <span className="font-extrabold italic">.dev</span>
                             </Link>
                         </motion.div>
-                        <motion.div className="hidden md:flex space-x-4 text-xs uppercase" variants={blockVairants}>
+                        <motion.div className="hidden md:flex space-x-4 text-xs uppercase" variants={blockVariants}>
                             {tabs.map((tab, index) => (
                                 <React.Fragment key={tab.id}>
                                     <Link href={tab.to} className="relative group text-slate-800 font-semibold tracking-wider">
@@ -135,7 +135,7 @@ export default function Navbar({show}: Props) {
                                 </React.Fragment>
                             ))}
                         </motion.div>
-                        <motion.div variants={blockVairants}>
+                        <motion.div variants={blockVariants}>
                             <button type="button" className="text-xs text-slate-700 bg-slate-200 px-3 py-1.5 rounded-md border-slate-400 hover:bg-slate-700 hover:text-white transition-all duration-300 tracking-wide uppercase">
                                 Hire Me
                             </button>
