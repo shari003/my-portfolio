@@ -5,6 +5,7 @@ import Navbar from '../../core/navbar';
 import Hero from '../../core/hero';
 import About from '../../core/about';
 import Projects from '../../core/projects';
+import ContactMe from '../../core/contact-me';
 
 export default function Home() {
 
@@ -30,6 +31,7 @@ export default function Home() {
                 <Hero />
                 <About />
                 <Projects />
+                <ContactMe />
             </div>
         </div>
     )
