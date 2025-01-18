@@ -2,6 +2,7 @@ import { ArrowUpRight, Github, Instagram, Linkedin } from 'lucide-react'
 import React from 'react'
 import { Teko } from 'next/font/google'
 import Image from 'next/image'
+import {motion} from 'framer-motion'
 
 const teko = Teko({
     weight: '400',
@@ -40,7 +41,13 @@ export default function ContactMe() {
     return (
         <section className='min-h-screen bg-primary text-black' id='contact'>
             <main className='pt-28 min-h-full max-w-7xl mx-auto px-12'>
-                <div className='flex justify-between items-start border-b-2 border-black/50'>
+                <motion.div 
+                    className='flex justify-between items-start border-b-2 border-black/50'
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    viewport={{ once: false }}
+                >
                     <div className='flex items-center'>
                         <ArrowUpRight size={250} />
                         <h3 className='uppercase text-6xl font-semibold'>
@@ -52,15 +59,27 @@ export default function ContactMe() {
                     <button type="button" className='mt-14 rounded-md text-lg border-2 border-black hover:bg-black hover:text-primary px-5 py-2 transition-colors duration-150 ease-out'>
                         SEND ME A MESSAGE
                     </button>
-                </div>
+                </motion.div>
 
-                <div>
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    viewport={{ once: false }}
+                >
                     <h2 className={`${teko.className} font-bold text-[12rem] text-center select-none`}>
                         SHRI HARI
                     </h2>
-                </div>
+                </motion.div>
 
-                <div id='socials' className='flex justify-between items-center'>
+                <motion.div 
+                    id='socials' 
+                    className='flex justify-between items-center'
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    viewport={{ once: false }}
+                >
                     <p className='uppercase text-xs'>
                         Designed by <a href="https://dribbble.com/madebyaseif" target='_blank' className='underline underline-offset-2 font-semibold'>Muhammad Aseif</a> | Customized and Developed by <span className='font-semibold'>Shri Hari</span>.
                     </p>
@@ -71,7 +90,7 @@ export default function ContactMe() {
                             </a>
                         ))}
                     </menu>
-                </div>
+                </motion.div>
             </main>
         </section>
     )
