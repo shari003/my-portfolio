@@ -82,11 +82,11 @@ export default function Navbar({show}: Props) {
                     >   
                         <motion.div variants={blockVariants} ref={hamburgerRef} className="block md:hidden relative">
                             <button onClick={handleClick} className="flex flex-col justify-center items-center">
-                                <span className={`bg-slate-700 block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`} >
+                                <span className={`text-black block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`} >
                                 </span>
-                                <span className={`bg-slate-700 block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isOpen ? 'opacity-0' : 'opacity-100'}`} >
+                                <span className={`text-black block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isOpen ? 'opacity-0' : 'opacity-100'}`} >
                                 </span>
-                                <span className={`bg-slate-700 block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'}`} >
+                                <span className={`text-black block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'}`} >
                                 </span>    
                             </button>
                             {isOpen && (
@@ -103,7 +103,7 @@ export default function Navbar({show}: Props) {
                                 >
                                     <div className="flex flex-col space-y-4 bg-white w-full">
                                         {tabs.map(tab => (
-                                            <Link key={tab.id} href={tab.to} className="text-slate-700 font-semibold tracking-wider uppercase text-sm">
+                                            <Link key={tab.id} href={tab.to} className="text-black font-semibold tracking-wider uppercase text-sm">
                                                 {tab.label}
                                             </Link>
                                         ))}
@@ -112,7 +112,7 @@ export default function Navbar({show}: Props) {
                             )}
                         </motion.div>
                         <motion.div variants={blockVariants}>
-                            <Link href="/" className="font-medium hover:bg-slate-200 hover:text-slate-700 bg-slate-700 text-white transition-all duration-300 px-2 py-1 rounded-md outline-none">
+                            <Link href="/" className="font-medium hover:bg-slate-200 hover:text-black bg-black text-white transition-all duration-300 px-2 py-1 rounded-md outline-none">
                                 <span>/</span>
                                 <span>shrihari</span>
                                 <span className="font-extrabold italic">.dev</span>
@@ -121,14 +121,14 @@ export default function Navbar({show}: Props) {
                         <motion.div className="hidden md:flex space-x-4 text-xs uppercase" variants={blockVariants}>
                             {tabs.map((tab, index) => (
                                 <React.Fragment key={tab.id}>
-                                    <Link href={tab.to} className="relative group text-slate-800 font-semibold tracking-wider">
+                                    <Link href={tab.to} className="relative group text-black font-semibold tracking-wider">
                                         <span className="inline-block">
                                             <span className="invisible font-semibold">{tab.label}</span>
-                                            <span className="absolute left-0 top-0 transition-all duration-300 group-hover:font-semibold group-hover:text-slate-700">
+                                            <span className="absolute left-0 top-0 transition-all duration-300 group-hover:font-semibold group-hover:text-black/90">
                                                 {tab.label}
                                             </span>
                                         </span>
-                                        <span className="absolute bottom-0 left-0 w-full h-[2px] bg-slate-800 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 cursor-default"></span>
+                                        <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 cursor-default"></span>
                                     </Link>
                                         
                                     {index < tabs.length - 1 && <span className="text-gray-400 cursor-default">/</span>}
@@ -136,7 +136,7 @@ export default function Navbar({show}: Props) {
                             ))}
                         </motion.div>
                         <motion.div variants={blockVariants}>
-                            <button type="button" className="text-xs text-slate-700 bg-slate-200 px-3 py-1.5 rounded-md border-slate-400 hover:bg-slate-700 hover:text-white transition-all duration-300 tracking-wide uppercase">
+                            <button type="button" className="text-xs text-black bg-slate-200 px-3 py-1.5 rounded-md border-slate-400 hover:bg-black hover:text-white transition-all duration-300 tracking-wide uppercase">
                                 Hire Me
                             </button>
                         </motion.div>

@@ -12,6 +12,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "#d9dde0",
+        
+      },
+      backgroundColor: {
+        primary: "#d9dde0"
       },
       animation: {
         "infinite-scroll": "infiniteScroll 18s linear infinite",

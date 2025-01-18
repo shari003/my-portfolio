@@ -4,6 +4,7 @@ import BlackScreen from '../../core/black-screen'
 import Navbar from '../../core/navbar';
 import Hero from '../../core/hero';
 import About from '../../core/about';
+import Projects from '../../core/projects';
 
 export default function Home() {
 
@@ -28,6 +29,7 @@ export default function Home() {
                 </div>
                 <Hero />
                 <About />
+                <Projects />
             </div>
         </div>
     )
