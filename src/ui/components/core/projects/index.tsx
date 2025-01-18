@@ -1,7 +1,5 @@
-'use client';
-import React, { useState } from 'react'
-import {Signika} from 'next/font/google'
-import {motion} from "framer-motion";
+import React from 'react';
+import {Signika} from 'next/font/google';
 import { Github, Globe } from 'lucide-react';
 import ProjectCard from './project-card';
 
@@ -84,29 +82,6 @@ export default function Projects() {
         }
     ];
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 3;
-
-    const totalPages = Math.ceil(projects.length / itemsPerPage);
-
-    const currentProjects = projects.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
-      );
-    
-      // Handle page navigation
-      const handleNext = () => {
-        if (currentPage < totalPages) {
-          setCurrentPage((prev) => prev + 1);
-        }
-    };
-    
-      const handlePrevious = () => {
-        if (currentPage > 1) {
-            setCurrentPage((prev) => prev - 1);
-        }
-    };
-
     return (
         <section className='min-h-screen bg-black text-primary' id='projects'>
             <main className='pt-28 min-h-full max-w-7xl mx-auto px-12'>
@@ -128,7 +103,7 @@ export default function Projects() {
                         
                     </div>
                     <div className={`mt-4 w-full grid grid-cols-3 gap-4 ${signika.className}`}>
-                        {currentProjects.map(project => (
+                        {projects.map(project => (
                             <ProjectCard key={project.id} {...project} />
                         ))}
                     </div>
