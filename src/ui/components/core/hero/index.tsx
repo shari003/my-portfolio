@@ -13,8 +13,8 @@ const signika = Signika({
 
 export default function Hero() {
     return (
-        <section className="md:pt-24 pt-16 overflow-hidden flex justify-center items-center relative min-h-screen bg-primary">
-            <main className="pt-28 min-h-screen md:max-w-7xl md:w-full md:mx-auto md:px-36 px-4">
+        <section className="overflow-hidden flex justify-center items-center relative min-h-screen bg-primary">
+            <main className="md:pt-24 pt-10 min-h-full md:max-w-7xl md:w-full md:mx-auto md:px-36 px-4">
                 <motion.div 
                     className="text-black font-bold flex items-center justify-center flex-col md:block"
                     initial="initial"

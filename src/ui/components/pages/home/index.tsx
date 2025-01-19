@@ -6,6 +6,7 @@ import Hero from '../../core/hero';
 import About from '../../core/about';
 import Projects from '../../core/projects';
 import ContactMe from '../../core/contact-me';
+import WorkExperience from '../../core/work-experience';
 // import Skills from '../../core/skills';
 
 export default function Home() {
@@ -33,6 +34,7 @@ export default function Home() {
                 <About />
                 <Projects />
                 {/* <Skills /> */}
+                <WorkExperience />
                 <ContactMe />
             </div>
         </div>
