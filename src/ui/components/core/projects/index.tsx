@@ -84,12 +84,12 @@ export default function Projects() {
 
     return (
         <section className='min-h-screen bg-black text-primary' id='projects'>
-            <main className='pt-28 min-h-full max-w-7xl mx-auto px-12'>
+            <main className='pt-28 min-h-full max-w-7xl mx-auto md:px-12 px-8'>
                 <div className='flex items-center justify-between gap-56'>
-                    <p className={`${signika.className} text-2xl`}>
+                    <p className={`${signika.className} md:text-2xl`}>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Non porro rerum enim placeat laborum, explicabo cum tempore ipsum magni soluta. Tempore ex minus, dolore necessitatibus ab debitis cupiditate quibusdam expedita quasi.
                     </p>
-                    <button type='button' className='border-2 border-slate-500 px-9 py-10 rounded-full'>
+                    <button type='button' className='hidden md:block border-2 border-slate-500 px-9 py-10 rounded-full'>
                         <span className='font-semibold'>
                             GET IN TOUCH
                         </span>
@@ -102,7 +102,7 @@ export default function Projects() {
                         </p>
                         
                     </div>
-                    <div className={`mt-4 w-full grid grid-cols-3 gap-4 ${signika.className}`}>
+                    <div className={`mt-4 w-full flex flex-col md:grid grid-cols-3 gap-4 ${signika.className}`}>
                         {projects.map(project => (
                             <ProjectCard key={project.id} {...project} />
                         ))}

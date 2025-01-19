@@ -6,6 +6,7 @@ import Hero from '../../core/hero';
 import About from '../../core/about';
 import Projects from '../../core/projects';
 import ContactMe from '../../core/contact-me';
+// import Skills from '../../core/skills';
 
 export default function Home() {
 
@@ -31,6 +32,7 @@ export default function Home() {
                 <Hero />
                 <About />
                 <Projects />
+                {/* <Skills /> */}
                 <ContactMe />
             </div>
         </div>

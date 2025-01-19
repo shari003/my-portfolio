@@ -1,13 +1,16 @@
-
+'use client';
 import React, {useEffect, useRef, useState} from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import {useRouter} from "next/navigation";
 
 type Props = {
     show: boolean;
 }
 
 export default function Navbar({show}: Props) {
+
+    const router = useRouter();
 
     const [isOpen, setIsOpen] = useState(false);
     const hamburgerRef = useRef<HTMLDivElement>(null);
@@ -55,6 +58,11 @@ export default function Navbar({show}: Props) {
         }
     }
 
+    function handleNavigate(to: string) {
+        router.push(to);
+        setIsOpen(false);
+    }
+
     useEffect(() => {
         document.addEventListener("click", handleOutsideClick);
         return () => document.removeEventListener("click", handleOutsideClick);
@@ -82,11 +90,11 @@ export default function Navbar({show}: Props) {
                     >   
                         <motion.div variants={blockVariants} ref={hamburgerRef} className="block md:hidden relative">
                             <button onClick={handleClick} className="flex flex-col justify-center items-center">
-                                <span className={`text-black block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`} >
+                                <span className={`bg-black block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`} >
                                 </span>
-                                <span className={`text-black block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isOpen ? 'opacity-0' : 'opacity-100'}`} >
+                                <span className={`bg-black block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isOpen ? 'opacity-0' : 'opacity-100'}`} >
                                 </span>
-                                <span className={`text-black block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'}`} >
+                                <span className={`bg-black block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'}`} >
                                 </span>    
                             </button>
                             {isOpen && (
@@ -101,13 +109,13 @@ export default function Navbar({show}: Props) {
                                         transition: {duration: 0.3, ease: "easeInOut"}
                                     }}
                                 >
-                                    <div className="flex flex-col space-y-4 bg-white w-full">
+                                    <menu className="flex flex-col space-y-4 bg-white w-full">
                                         {tabs.map(tab => (
-                                            <Link key={tab.id} href={tab.to} className="text-black font-semibold tracking-wider uppercase text-sm">
+                                            <li key={tab.id} onClick={() => handleNavigate(tab.to)} className="text-black font-semibold tracking-wider uppercase text-sm">
                                                 {tab.label}
-                                            </Link>
+                                            </li>
                                         ))}
-                                    </div>
+                                    </menu>
                                 </motion.div>
                             )}
                         </motion.div>
