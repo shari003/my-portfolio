@@ -33,9 +33,14 @@ export default function Navbar({show}: Props) {
         },
         {
             id: 4,
-            label: "Skills",
-            to: "#skills"
+            label: "Work Experience",
+            to: "#work-experience"
         },
+        // {
+        //     id: 4,
+        //     label: "Skills",
+        //     to: "#skills"
+        // },
         {
             id: 5,
             label: "Contact",

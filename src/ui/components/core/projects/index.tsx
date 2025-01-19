@@ -102,7 +102,7 @@ export default function Projects() {
                         </p>
                         
                     </div>
-                    <div className={`mt-4 w-full flex flex-col md:grid grid-cols-3 gap-4 ${signika.className}`}>
+                    <div className={`mt-4 pb-8 md:pb-0 w-full flex flex-col md:grid grid-cols-3 gap-4 ${signika.className}`}>
                         {projects.map(project => (
                             <ProjectCard key={project.id} {...project} />
                         ))}
