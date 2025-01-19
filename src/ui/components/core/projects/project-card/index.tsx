@@ -1,3 +1,4 @@
+import { Github, Globe } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react'
 
@@ -10,17 +11,15 @@ type Props = {
     externals: {
         name: string;
         url: string;
-        icon: React.ReactNode;
     }[];
 }
 
 export default function ProjectCard(project: Props) {
-
     
     return (
         <div key={project.id} className='rounded-lg'>
-            <div>
-                <Image src={project.image} alt={project.title} width={300} height={200} className='object-cover rounded-t-lg shadow-md h-[180px] w-full' />
+            <div className='overflow-hidden rounded-t-lg'>
+                <Image src={project.image} alt={project.title} width={300} height={200} className='object-cover rounded-t-lg shadow-md h-[180px] w-full scale-100 hover:scale-105 transition-transform duration-300 ' />
             </div>
             <div className='px-3 pt-1 pb-3 text-white bg-black rounded-b-lg border-x border-b border-primary/20'>
                 <h2 className='font-medium text-lg'>{project.title}</h2>
@@ -29,15 +28,19 @@ export default function ProjectCard(project: Props) {
                 </p>
                 <div className='mt-2 flex items-center gap-2'>
                     {project.skills.map(skill => (
-                        <span key={skill} className='text-xs bg-gray-600 text-white px-1 py-0.5 rounded-sm'>
+                        <span key={skill} className='text-xs bg-gray-800 text-white px-1 py-0.5 rounded-sm'>
                             {skill}   
                         </span>   
                     ))}
                 </div>
                 <div className='mt-2 flex items-center gap-2'>
                     {project.externals.map(external => (
-                        <a key={external.name} href={external.url} className='text-xs flex items-center gap-1 bg-white text-black px-1 py-0.5 rounded-sm'>
-                            {external.icon}
+                        <a key={external.name} href={external.url} className='text-xs flex items-center gap-1 bg-black hover:bg-primary text-primary hover:text-black border border-primary/50 px-1 py-0.5 rounded-sm transition-colors duration-150' target="_blank" rel="noreferrer">
+                            {external.name === "Source" ? (
+                                <Globe size={16} />
+                            ) : (
+                                <Github size={16} />
+                            )}
                             {external.name}
                         </a>
                     ))}
