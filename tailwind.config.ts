@@ -19,12 +19,12 @@ export default {
         primary: "#d9dde0"
       },
       animation: {
-        "infinite-scroll": "infiniteScroll 18s linear infinite",
+        "infinite-scroll": "infinite-scroll 4s linear infinite",
       },
       keyframes: {
-        "infiniteScroll": {
-          from: { transform: "translateX(0)" },
-          to: { transform: "translateX(calc(-50% - 20px))" },
+        "infinite-scroll": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(calc(-50% - 20px))" },
         }
       },
       fontFamily: {
