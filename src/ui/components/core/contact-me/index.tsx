@@ -3,6 +3,7 @@ import React from 'react'
 import { Teko } from 'next/font/google'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import FormTrigger from '../../shared/form-trigger'
 
 const teko = Teko({
     weight: '400',
@@ -56,9 +57,13 @@ export default function ContactMe() {
                             Together
                         </h3>
                     </div>
-                    <button type="button" className='md:mt-14 rounded-md md:text-lg border-2 border-black hover:bg-black hover:text-primary px-5 py-2 transition-colors duration-150 ease-out'>
-                        SEND ME A MESSAGE
-                    </button>
+                    <FormTrigger 
+                        triggerTemplate={
+                            <button type="button" className='md:mt-14 rounded-md md:text-lg border-2 border-black hover:bg-black hover:text-primary px-5 py-2 transition-colors duration-150 ease-out'>
+                                SEND ME A MESSAGE
+                            </button>
+                        }   
+                    />
                 </motion.div>
 
                 <div className='h-[1px] bg-black/80'></div>
@@ -89,7 +94,7 @@ export default function ContactMe() {
                         </p>
                         <menu className='flex items-center gap-8'>
                             {socials.map((social, index) => (
-                                <a key={index} href={social.url} target='_blank' className={`uppercase text-xs font-semibold border border-transparent p-1 rounded-md`}>
+                                <a key={index} href={social.url} title={social.name} target='_blank' className={`uppercase text-xs font-semibold border border-transparent p-1 rounded-md hover:opacity-60 transition-opacity duration-300`}>
                                     {social.icon}
                                 </a>
                             ))}

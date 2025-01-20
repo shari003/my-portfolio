@@ -135,7 +135,7 @@ export default function Navbar({show}: Props) {
                             <motion.div className="hidden md:flex space-x-4 text-xs uppercase" variants={blockVariants}>
                                 {tabs.map((tab, index) => (
                                     <React.Fragment key={tab.id}>
-                                        <Link href={tab.to} className="relative group text-black font-semibold tracking-wider">
+                                        <button type="button" onClick={() => handleNavigate(tab.to)} className="uppercase relative group text-black font-semibold tracking-wider">
                                             <span className="inline-block">
                                                 <span className="invisible font-semibold">{tab.label}</span>
                                                 <span className="absolute left-0 top-0 transition-all duration-300 group-hover:font-semibold group-hover:text-black/90">
@@ -143,7 +143,7 @@ export default function Navbar({show}: Props) {
                                                 </span>
                                             </span>
                                             <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 cursor-default"></span>
-                                        </Link>
+                                        </button>
                                             
                                         {index < tabs.length - 1 && <span className="text-gray-400 cursor-default">/</span>}
                                     </React.Fragment>

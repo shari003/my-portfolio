@@ -2,6 +2,7 @@ import React from 'react';
 import {Signika} from 'next/font/google';
 import ProjectCard from './project-card';
 import getProjects from '@/backend/actions/getProjects';
+import FormTrigger from '../../shared/form-trigger';
 
 const signika = Signika({
     weight: '400',
@@ -19,11 +20,16 @@ export default function Projects() {
                     <p className={`${signika.className} md:text-2xl`}>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Non porro rerum enim placeat laborum, explicabo cum tempore ipsum magni soluta. Tempore ex minus, dolore necessitatibus ab debitis cupiditate quibusdam expedita quasi.
                     </p>
-                    <button type='button' className='hidden md:block border-2 border-slate-500 px-9 py-10 rounded-full'>
-                        <span className='font-semibold'>
-                            GET IN TOUCH
-                        </span>
-                    </button>
+                    <FormTrigger 
+                        triggerTemplate={
+                            <button type='button' className='hidden md:block border-2 border-slate-500 px-9 py-10 rounded-full'>
+                                <span className='font-semibold'>
+                                    GET IN TOUCH
+                                </span>
+                            </button>
+                        }
+                        additionalClasses='hidden md:block'
+                    />
                 </div>
                 <div className='mt-8'>
                     <div className='flex justify-between items-center'>
