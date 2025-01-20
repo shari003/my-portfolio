@@ -5,7 +5,7 @@ import React from 'react'
 type Props = {
     id: string;
     title: string;
-    description: string;
+    description: string[];
     image: string;
     skills: string[];
     externals: {
@@ -23,9 +23,14 @@ export default function ProjectCard(project: Props) {
             </div>
             <div className='px-3 pt-1 pb-3 text-white bg-black rounded-b-lg border-x border-b border-primary/20'>
                 <h2 className='font-medium text-lg'>{project.title}</h2>
-                <p className='line-clamp-3 text-sm text-primary/80 leading-4'>
-                    {project.description}
-                </p>
+
+                <ul className='text-sm text-primary/80 leading-3 overflow-hidden'>
+                    {project.description.slice(0, 3).map((desc, index) => (
+                        <li key={index} className='whitespace-nowrap overflow-auto scrollbar-hide text-sm text-primary/80 leading-4'>
+                            {desc}
+                        </li>
+                    ))}
+                </ul>
                 <div className='mt-2 flex items-center gap-2'>
                     {project.skills.map(skill => (
                         <span key={skill} className='text-xs bg-gray-800 text-white px-1 py-0.5 rounded-sm'>

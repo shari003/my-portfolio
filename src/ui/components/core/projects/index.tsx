@@ -18,7 +18,7 @@ export default function Projects() {
             <main className='pt-28 min-h-full max-w-7xl mx-auto md:px-12 px-8'>
                 <div className='flex items-center justify-between gap-56'>
                     <p className={`${signika.className} md:text-2xl`}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non porro rerum enim placeat laborum, explicabo cum tempore ipsum magni soluta. Tempore ex minus, dolore necessitatibus ab debitis cupiditate quibusdam expedita quasi.
+                        I love transforming ideas into impactful projects, combining creativity with technology to deliver exceptional solutions. Whether it&apos;s building intuitive web applications, solving real-world problems, or experimenting with cutting-edge tools, I&apos;m always up for a challenge.
                     </p>
                     <FormTrigger 
                         triggerTemplate={
