@@ -1,8 +1,8 @@
-'use client';
 import getWorkExperience from '@/backend/actions/getWorkExperience'
 import React from 'react'
 import {Signika} from "next/font/google"
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const signika = Signika({
     weight: "400",
@@ -22,7 +22,7 @@ export default function WorkExperience() {
                         <span className='opacity-80'>Professional Experience</span>
                         <span className='opacity-95'>{"///"}</span>
                     </h2>
-                    <a href='https://drive.google.com/file/d/1EniuZTdf0OhxZm8eEaT2cS8D0xNV3Vop/view?usp=sharing' target="_blank" rel="noreferrer" className={`${signika.className} text-xs flex items-center gap-2 border p-2 rounded hover:bg-primary hover:text-black transition-colors duration-300 w-fit`}>
+                    <a href={process.env.NEXT_PUBLIC_MY_RESUME ?? ""} target="_blank" rel="noreferrer" className={`${signika.className} text-xs flex items-center gap-2 border p-2 rounded hover:bg-primary hover:text-black transition-colors duration-300 w-fit`}>
                         <span className='font-semibold tracking-widest'>
                             MY RESUME
                         </span>
@@ -43,13 +43,19 @@ export default function WorkExperience() {
                             <h4>
                                 <a href={exp.company.url} className='hover:underline underline-offset-2' target="_blank" rel="noreferrer">{exp.company.title}</a>, {exp.location}
                             </h4>
-                            <ul className='pt-2 mb-4 text-base font-normal text-gray-500 dark:text-gray-400'>
+                            <motion.ul 
+                                className='pt-2 mb-4 text-base font-normal text-gray-500 dark:text-gray-400'
+                                initial={{ opacity: 0, y: 5 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, ease: "easeOut" }}
+                                viewport={{ once: false }}
+                            >
                                 {exp.description?.map((desc, index) => (
                                     <li key={index} className='list-disc ml-4'>
                                         {desc}
                                     </li>
                                 ))}
-                            </ul>
+                            </motion.ul>
                         </li>
                     ))}
                 </ol>

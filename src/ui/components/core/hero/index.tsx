@@ -26,7 +26,7 @@ export default function Hero() {
                     }}
                 >
                     <h1 
-                        className={`text-left md:text-[9rem] text-9xl md:leading-[8rem] tracking-wider ${teko.className} [&>*]:h-fit`}
+                        className={`text-left md:text-[9rem] text-9xl md:leading-[8rem] tracking-wider ${teko.className} select-none [&>*]:h-fit`}
                     >
                         <span>I<span className="text-slate-700">&apos;</span>M</span>
                         <br />
