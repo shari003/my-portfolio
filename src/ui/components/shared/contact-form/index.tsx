@@ -107,7 +107,7 @@ export default function ContactForm({ onFormClose }: Props) {
             </div>
 
             <div className="p-4 md:p-5 space-y-4">
-                <div className='grid grid-cols-2 gap-4'>
+                <div className='grid md:grid-cols-2 gap-4'>
                     <div>
                         <label htmlFor="name" className="block text-sm font-medium text-primary">Name*</label>
                         <input type="text" id="name" name="name" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300" value={fields.from_name} onChange={e => handleSetFields(e.target.value, 'FROM_NAME')} placeholder="What should I call you?" required />
@@ -137,7 +137,7 @@ export default function ContactForm({ onFormClose }: Props) {
 
             <div className="flex justify-between items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
                 <div>
-                    <button type='button' onClick={handleMailRedirect} className='flex items-center gap-2 py-2.5 px-5 text-sm font-medium focus:outline-none rounded-lg border border-primary/80 hover:bg-primary hover:text-black transition-colors duration-150'>
+                    <button type='button' onClick={handleMailRedirect} className='flex items-center gap-2 py-2.5 px-5 text-sm font-medium focus:outline-none rounded-lg border border-primary/80 hover:bg-primary text-primary hover:text-black transition-colors duration-150'>
                         Mail me
                         <Send size={18} />
                     </button>
