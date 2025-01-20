@@ -16,8 +16,8 @@ export default function Home() {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-        setShowBlackScreen(false);
-        setShowNavbar(true);
+            setShowBlackScreen(false);
+            setShowNavbar(true);
         }, 1000);
 
         return () => clearTimeout(timer);
@@ -26,15 +26,13 @@ export default function Home() {
     return (
         <div className='relative bg-slate-200'>
             <BlackScreen show={showBlackScreen} />
-            <div className="min-h-screen scroll-smooth">
-                <Navbar show={showNavbar} />
-                <Hero />
-                <About />
-                <Projects />
-                {/* <Skills /> */}
-                <WorkExperience />
-                <ContactMe />
-            </div>
+            <Navbar show={showNavbar} />
+            <Hero />
+            <About />
+            <Projects />
+            {/* <Skills /> */}
+            <WorkExperience />
+            <ContactMe />
         </div>
     )
 }
