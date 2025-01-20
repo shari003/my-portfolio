@@ -6,6 +6,13 @@ const experience = [
             title: 'Tutort Academy LLP',
             url: 'https://tutort.net/',
         },
+        product: [
+            {   
+                id: 1,
+                name: "Portal",
+                url: "https://portal.tutort.net/"
+            }
+        ],
         location: 'On-Site, Bengaluru, KA, IN',
         duration: 'September 2024 - Present',
         description: [
@@ -22,6 +29,13 @@ const experience = [
             title: 'Tutort Academy LLP',
             url: 'https://tutort.net/',
         },
+        product: [
+            {   
+                id: 1,
+                name: "Website",
+                url: "https://tutort.net/"
+            }
+        ],
         location: 'On-Site, Bengaluru, KA, IN',
         duration: 'March 2024 - August 2024',
         description: [
@@ -36,6 +50,9 @@ const experience = [
             title: 'Xebia',
             url: 'https://xebia.com/',
         },
+        product: [
+            
+        ],
         location: 'Remote',
         duration: 'June 2023 - August 2023',
         description: [
@@ -50,6 +67,7 @@ const experience = [
             title: 'Rudraksha Welfare Foundation',
             url: 'https://rudraksha.org.in/',
         },
+        product: [],
         location: 'Remote',
         duration: 'June 2022 - August 2022',
         description: [

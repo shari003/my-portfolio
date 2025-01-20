@@ -53,7 +53,13 @@ export default function About() {
                         </div>
                         <div className='col-span-4 flex flex-col gap-6'>
                             <p className={`${signika.className} text-left`}>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium nemo molestias explicabo vero similique hic. Nam accusamus temporibus rerum praesentium officiis incidunt libero nesciunt alias itaque corrupti provident aliquid eveniet a molestiae aut debitis illo maxime rem soluta, ducimus impedit magni. Porro provident doloremque, mollitia quidem deleniti, earum ad debitis perferendis soluta, saepe modi corrupti necessitatibus nihil explicabo! Eaque mollitia nesciunt voluptatem nemo numquam nulla consequatur accusantium facilis optio, molestiae at. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores doloremque itaque officia qui autem molestias quo sint nostrum necessitatibus, dignissimos nam est repudiandae aut minus saepe accusamus nesciunt hic cumque similique blanditiis in consequatur aperiam facilis adipisci. Suscipit, alias a?
+                                Hi,
+                                <br />
+                                I am K. Shri Hari, a passionate Software Engineer skilled in crafting intuitive web applications and scalable backend systems. With expertise in the MERN stack, TypeScript, and AWS, I thrive on building impactful solutions that drive user engagement and streamline processes.
+                                <br />
+                                In my current role, I’ve led the development of Tutort’s website and admin portal, integrated advanced features like a coding engine and contest modules, and created personalized mentor session tools to enhance user experiences. My prior experience includes building CRM systems with comprehensive functionality, showcasing my ability to manage both frontend and backend development seamlessly.
+                                <br />
+                                I’m always eager to explore emerging technologies and deliver solutions that align with strategic goals. Let’s connect and create something extraordinary!
                             </p>
                             <p className={`text-sm uppercase`}>Currently working with <br className='md:hidden block' /><a href={"https://www.tutort.net?utm_source=shri+hari&utm_medium=shrihari.dev"} target='_blank' className='underline underline-offset-2 font-semibold'>Tutort Academy LLP</a> as a Software Developer</p>
                         </div>
