@@ -43,6 +43,11 @@ export default function WorkExperience() {
                             <h4>
                                 <a href={exp.company.url} className='hover:underline underline-offset-2' target="_blank" rel="noreferrer">{exp.company.title}</a>, {exp.location}
                             </h4>
+                            <p className='text-sm font-normal text-gray-500 dark:text-gray-400'>
+                                {exp.product.map((product) => (
+                                    <a key={product.name + "_" + product.id} href={product.url} className='hover:underline underline-offset-2' target="_blank" rel="noreferrer">{product.name}</a>
+                                ))}
+                            </p>
                             <motion.ul 
                                 className='pt-2 mb-4 text-base font-normal text-gray-500 dark:text-gray-400'
                                 initial={{ opacity: 0, y: 5 }}
