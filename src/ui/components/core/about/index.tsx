@@ -31,8 +31,8 @@ export default function About() {
                     >   
                         <div>
                             <h2 className="uppercase m-0 p-0">
-                                <span className="md:text-[18em] text-7xl font-medium mb-2 inline-block">/</span>
-                                <span className={`md:text-[18em] text-7xl tracking-tight font-bold inline-block ${teko.className}`}>ABOUT</span>
+                                <span className="text-7xl md:text-[18em] 2xl:text-[22em] font-medium mb-2 inline-block">/</span>
+                                <span className={`md:text-[18em] text-7xl 2xl:text-[22em] tracking-tight font-bold inline-block ${teko.className}`}>ABOUT</span>
                             </h2>
                         </div>
                     </motion.div>
@@ -44,14 +44,14 @@ export default function About() {
                         viewport={{ once: false }}
                     >
                         <div className={`md:block hidden col-span-2 ${rubikGlitch.className}`}>
-                            <p className='text-7xl'>ABOUT</p>
-                            <p className='text-7xl -mt-8 opacity-80'>ABOUT</p>
-                            <p className='text-7xl -mt-8 opacity-60'>ABOUT</p>
-                            <p className='text-7xl -mt-8 opacity-40'>ABOUT</p>
-                            <p className='text-7xl -mt-8 opacity-20'>ABOUT</p>
-                            <p className='text-7xl -mt-8 opacity-10'>ABOUT</p>
+                            <p className='text-7xl 2xl:text-[5.5em]'>ABOUT</p>
+                            <p className='text-7xl 2xl:text-[5.5em] -mt-8 opacity-80'>ABOUT</p>
+                            <p className='text-7xl 2xl:text-[5.5em] -mt-8 opacity-60'>ABOUT</p>
+                            <p className='text-7xl 2xl:text-[5.5em] -mt-8 opacity-40'>ABOUT</p>
+                            <p className='text-7xl 2xl:text-[5.5em] -mt-8 opacity-20'>ABOUT</p>
+                            <p className='text-7xl 2xl:text-[5.5em] -mt-8 opacity-10'>ABOUT</p>
                         </div>
-                        <div className='col-span-4 flex flex-col gap-6'>
+                        <div className='col-span-4 flex flex-col gap-6 2xl:text-2xl'>
                             <p className={`${signika.className} text-left`}>
                                 Hi,
                                 <br />
@@ -61,7 +61,7 @@ export default function About() {
                                 <br />
                                 I’m always eager to explore emerging technologies and deliver solutions that align with strategic goals. Let’s connect and create something extraordinary!
                             </p>
-                            <p className={`text-sm uppercase`}>Currently working with <br className='md:hidden block' /><a href={"https://www.tutort.net?utm_source=shri+hari&utm_medium=shrihari.dev"} target='_blank' className='underline underline-offset-2 font-semibold'>Tutort Academy LLP</a> as a Software Developer</p>
+                            <p className={`text-sm 2xl:text-xl uppercase`}>Currently working with <br className='md:hidden block' /><a href={"https://www.tutort.net?utm_source=shri+hari&utm_medium=shrihari.dev"} target='_blank' className='underline underline-offset-2 font-semibold'>Tutort Academy LLP</a> as a Software Developer</p>
                         </div>
                     </motion.div>
                 </div>

@@ -29,6 +29,9 @@ export default {
       },
       fontFamily: {
         "teko": ["Teko", "serif"],
+      },
+      screens: {
+        '2xl': '1600px'
       }
     },
   },
