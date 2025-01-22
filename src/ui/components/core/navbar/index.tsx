@@ -74,11 +74,11 @@ export default function Navbar({show}: Props) {
     }, []);
 
     return (
-        <div className="max-w-7xl mx-auto relative">
+        <div className="md:max-w-7xl mx-auto relative">
             <AnimatePresence>
                 {show && (
                     <motion.header 
-                        className="fixed top-0 left-0 z-50 w-screen md:w-full px-8 md:px-36 py-4 backdrop-blur-sm"
+                        className="fixed top-0 left-0 z-50 h-20 w-screen md:w-full px-8 md:px-36 py-4 backdrop-blur-sm"
                         initial={{translateY: "-100%", backdropFilter: "blur(0px)"}}
                         animate={{translateY: "0%", backdropFilter: "blur(5px)"}}
                         exit={{translateY: "-100%", backdropFilter: "blur(0px)"}}

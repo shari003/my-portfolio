@@ -74,10 +74,10 @@ export default function ContactMe() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, ease: "easeOut" }}
                         viewport={{ once: false }}
-                        className='grow'
+                        className='grow flex justify-center items-center flex-col'
                     >
-                        <h2 className={`${teko.className} font-bold text-9xl md:text-[12rem] text-center select-none`}>
-                            SHRI <br className='md:hidden block' />HARI
+                        <h2 className={`${teko.className} font-bold text-9xl md:text-[12rem] 2xl:text-[15rem] text-center select-none`}>
+                            SHRI <br className='md:hidden block 2xl:block' />HARI
                         </h2>
                     </motion.div>
 

@@ -26,7 +26,7 @@ export default function Hero() {
                     }}
                 >
                     <h1 
-                        className={`text-left md:text-[9rem] text-9xl md:leading-[8rem] tracking-wider ${teko.className} select-none [&>*]:h-fit`}
+                        className={`text-left md:text-[9rem] 2xl:text-[10rem] text-9xl md:leading-[8rem] tracking-wider ${teko.className} select-none [&>*]:h-fit`}
                     >
                         <span>I<span className="text-slate-700">&apos;</span>M</span>
                         <br />
@@ -34,7 +34,7 @@ export default function Hero() {
                         <br />
                         <span className="flex items-end">HARI <span className=" text-slate-700">.</span></span>
                     </h1>
-                    <p className={`${signika.className} text-2xl pt-10 md:pt-4 px-4 md:px-0 uppercase tracking-wider text-slate-700`}>
+                    <p className={`${signika.className} text-2xl 2xl:text-3xl pt-10 md:pt-4 px-4 md:px-0 uppercase tracking-wider text-slate-700`}>
                         Full Stack Developer & Data Scientist
                     </p>
                 </motion.div>

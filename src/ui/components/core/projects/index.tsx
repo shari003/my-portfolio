@@ -17,7 +17,7 @@ export default function Projects() {
         <section className='min-h-screen bg-black text-primary' id='projects'>
             <main className='pt-28 min-h-full max-w-7xl mx-auto md:px-12 px-8'>
                 <div className='flex items-center justify-between gap-56'>
-                    <p className={`${signika.className} md:text-2xl`}>
+                    <p className={`${signika.className} md:text-2xl 2xl:text-3xl`}>
                         I love transforming ideas into impactful projects, combining creativity with technology to deliver exceptional solutions. Whether it&apos;s building intuitive web applications, solving real-world problems, or experimenting with cutting-edge tools, I&apos;m always up for a challenge.
                     </p>
                     <FormTrigger 
@@ -33,12 +33,12 @@ export default function Projects() {
                 </div>
                 <div className='mt-8'>
                     <div className='flex justify-between items-center'>
-                        <p className={`${signika.className} uppercase text-primary`}>
+                        <p className={`${signika.className} uppercase text-primary 2xl:text-xl`}>
                             My Projects
                         </p>
                         
                     </div>
-                    <div className={`mt-4 pb-8 md:pb-0 w-full flex flex-col md:grid grid-cols-3 gap-4 ${signika.className}`}>
+                    <div className={`mt-4 pb-8 md:pb-0 2xl:pb-8 w-full flex flex-col md:grid grid-cols-3 2xl:grid-cols-2 gap-4 ${signika.className}`}>
                         {projects.map(project => (
                             <ProjectCard key={project.id} {...project} />
                         ))}
