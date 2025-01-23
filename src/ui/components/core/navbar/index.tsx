@@ -3,50 +3,19 @@ import React, {useEffect, useRef, useState} from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import {useRouter} from "next/navigation";
+import { NavItemType } from "@/backend/actions/getNavItems";
 
 type Props = {
     show: boolean;
+    tabs: NavItemType[];
 }
 
-export default function Navbar({show}: Props) {
+export default function Navbar({show, tabs}: Props) {
 
     const router = useRouter();
 
     const [isOpen, setIsOpen] = useState(false);
     const hamburgerRef = useRef<HTMLDivElement>(null);
-
-    const tabs = [
-        {
-            id: 1,
-            label: "Home",
-            to: "/"
-        },
-        {
-            id: 2,
-            label: "About",
-            to: "#about"
-        },
-        {
-            id: 3,
-            label: "Projects",
-            to: "#projects"
-        },
-        {
-            id: 4,
-            label: "Work Experience",
-            to: "#work-experience"
-        },
-        // {
-        //     id: 4,
-        //     label: "Skills",
-        //     to: "#skills"
-        // },
-        {
-            id: 5,
-            label: "Contact",
-            to: "#contact"
-        }
-    ];
 
     const blockVariants = {
         initial: {y: -5, opacity: 0},
@@ -126,10 +95,9 @@ export default function Navbar({show}: Props) {
                                 )}
                             </motion.div>
                             <motion.div variants={blockVariants}>
-                                <Link href="/" className="font-medium hover:bg-slate-200 hover:text-black bg-black text-white transition-all duration-300 px-2 py-1 rounded-md outline-none">
-                                    <span>/</span>
-                                    <span>shrihari</span>
-                                    <span className="font-extrabold italic">.dev</span>
+                                <Link href="/" className="font-medium hover:bg-slate-200 hover:text-black bg-black text-white transition-colors duration-300 px-2 py-1 rounded-md outline-none">
+                                    <span>{"/"}shri</span>
+                                    <span className="font-extrabold italic">.is-a.dev</span>
                                 </Link>
                             </motion.div>
                             <motion.div className="hidden md:flex space-x-4 text-xs uppercase" variants={blockVariants}>
