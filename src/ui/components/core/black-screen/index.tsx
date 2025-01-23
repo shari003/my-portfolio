@@ -27,7 +27,7 @@ export default function BlackScreen({show}: Props) {
                     exit='hidden'
                     transition={{duration: 0.5, ease: "easeInOut", delay: 0.5}}
                 >
-                    <motion.div
+                    <motion.h1
                         className='flex flex-row items-center'
                         initial='initial'
                         animate='falling'
@@ -37,11 +37,10 @@ export default function BlackScreen({show}: Props) {
                             ease: "easeInOut"
                         }}
                     >
-                        <motion.h1 className='text-white text-2xl font-bold' variants={wordVairants}>shri</motion.h1>
-                        <motion.h1 className='text-white text-2xl font-bold' variants={wordVairants}>hari</motion.h1>
-                        <motion.h1 className='text-white text-2xl font-bold' variants={wordVairants}>.</motion.h1>
-                        <motion.h1 className='text-white text-2xl font-bold' variants={wordVairants}>dev</motion.h1>
-                    </motion.div>
+                        <motion.span className='text-white text-2xl font-bold' variants={wordVairants}>shri</motion.span>
+                        <motion.span className='text-white text-2xl font-bold' variants={wordVairants}>.is-a</motion.span>
+                        <motion.span className='text-white text-2xl font-bold' variants={wordVairants}>.dev</motion.span>
+                    </motion.h1>
                 </motion.div>
             )}
         </AnimatePresence>

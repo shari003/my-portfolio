@@ -61,7 +61,7 @@ export default function About() {
                                 <br />
                                 I’m always eager to explore emerging technologies and deliver solutions that align with strategic goals. Let’s connect and create something extraordinary!
                             </p>
-                            <p className={`text-sm 2xl:text-xl uppercase`}>Currently working with <br className='md:hidden block' /><a href={"https://www.tutort.net?utm_source=shri+hari&utm_medium=shrihari.dev"} target='_blank' className='underline underline-offset-2 font-semibold'>Tutort Academy LLP</a> as a Software Developer</p>
+                            <p className={`text-sm 2xl:text-xl uppercase`}>Currently working with <br className='md:hidden block' /><a href={`https://www.tutort.net?utm_source=shri+hari+portfolio&utm_medium=shri.is-a.dev`} target='_blank' className='underline underline-offset-2 font-semibold'>Tutort Academy LLP</a> as a Software Developer</p>
                         </div>
                     </motion.div>
                 </div>

@@ -5,17 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 's3-ap-south-1.amazonaws.com',
-        port: '',
-      },
-      {
-        protocol: 'https',
-        hostname: 'plus.unsplash.com',
-        port: '',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdn.builtin.com',
+        hostname: 'miro.medium.com',
         port: '',
       },
     ],
