@@ -1,5 +1,26 @@
 const experience = [
     {
+        id: 5,
+        title: 'Software Engineer II',
+        company: {
+            title: 'Tutort Academy LLP',
+            url: 'https://tutort.net/',
+        },
+        product: [
+            {   
+                id: 1,
+                name: "Portal",
+                url: "https://portal.tutort.net/"
+            }
+        ],
+        location: 'On-Site, Bengaluru, KA, IN',
+        duration: 'April 2025 - Present',
+        description: [
+            'Automated notifications and communication using AWS SQS, Lambda, EventBridge, and SES, ensuring scalable and reliable delivery of class-related emails and system alerts',
+            'Integrated Zoom APIs to enable class scheduling, and class management features within the portal. Designed and implemented a serverless pipeline to automate class recording uploads to AWS S3, followed by Video Transcoding for adaptive video streaming on the portal using AWS ECS, Lambda, SQS, FFmpeg.'
+        ]
+    },
+    {
         id: 4,
         title: 'Software Developer',
         company: {
@@ -14,7 +35,7 @@ const experience = [
             }
         ],
         location: 'On-Site, Bengaluru, KA, IN',
-        duration: 'September 2024 - Present',
+        duration: 'September 2024 - March 2025',
         description: [
             'Spearheaded the development of a Coding Engine, enabling course beneficiaries to practice coding through an interactive platform similar to Leetcode and HackerRank, enhancing user experience (UX) with intuitive design.',
             'Created a Contest Module within the Coding Engine, allowing students to participate in coding contests, submit solutions, and receive immediate feedback on their performance, fostering a competitive learning environment.',

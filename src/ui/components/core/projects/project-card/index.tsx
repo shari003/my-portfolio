@@ -1,9 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 import { Github, Globe } from 'lucide-react';
-import Image from 'next/image';
 import React from 'react'
 
 type Props = {
-    id: string;
+    id: number;
     title: string;
     description: string[];
     image: string;
@@ -19,7 +19,11 @@ export default function ProjectCard(project: Props) {
     return (
         <div key={project.id} className='rounded-lg'>
             <div className='overflow-hidden rounded-t-lg'>
-                <Image src={project.image} alt={project.title} width={300} height={200} className='object-cover rounded-t-lg shadow-md h-[180px] w-full scale-100 hover:scale-105 transition-transform duration-300 ' />
+                {project.image ? (
+                    <img src={project.image} alt={project.title} width={300} height={200} className='object-cover rounded-t-lg shadow-md h-[180px] w-full scale-100 hover:scale-105 transition-transform duration-300' />
+                ) : (
+                    <div className='object-cover rounded-t-lg shadow-md h-[180px] w-full scale-100 hover:scale-105 transition-transform duration-300 bg-white/10' />
+                )}
             </div>
             <div className='px-3 pt-1 pb-3 text-white bg-black rounded-b-lg border-x border-b border-primary/20'>
                 <h2 className='font-medium text-lg 2xl:text-xl'>{project.title}</h2>
@@ -31,7 +35,7 @@ export default function ProjectCard(project: Props) {
                         </li>
                     ))}
                 </ul>
-                <div className='mt-2 flex items-center gap-2'>
+                <div className='mt-2 flex flex-wrap items-center gap-2'>
                     {project.skills.map(skill => (
                         <span key={skill} className='text-xs 2xl:text-sm bg-gray-800 text-white px-1 py-0.5 rounded-sm'>
                             {skill}   

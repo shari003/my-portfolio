@@ -1,6 +1,6 @@
 const projects = [
     {
-        id: 'project-1',
+        id: 3,
         title: "Jetflix (Powered by GPT)",
         description: [
             "Jetflix is a Netflix clone that uses TMDB API to fetch movies and TV shows.",
@@ -27,7 +27,7 @@ const projects = [
         ]
     },
     {
-        id: 'project-2',
+        id: 4,
         title: "Biryani Mowa",
         description: [
             "Biryani Mowa is a food delivery app that allows users to order food online.",
@@ -52,52 +52,81 @@ const projects = [
             }
         ]
     },
-    {
-        id: 'project-3',
-        title: "Pulspal",
-        description: [
-            "Pulspal is a social media app that allows users to share their thoughts and connect with others.",
-            "The app is built using MERN stack and Material UI.",
-            "The app also has features like liking posts."
-        ],
-        image: "/assets/projects/pulspal.png",
-        skills: [
-            "React",
-            "MongoDB",
-            "Node.js",
-            "Express",
-            "Material UI",
-            "Redux"
-        ],
-        externals: [
-            {
-                name: "Source",
-                url: "https://github.com/shari003/Pulspal",
-            },
-        ]
-    },
     // {
-    //     id: 'project-4',
-    //     title: "QuickCrave",
-    //     description: [],
-    //     image: "/assets/projects/quickcrave.png",
+    //     id: 5,
+    //     title: "Pulspal",
+    //     description: [
+    //         "Pulspal is a social media app that allows users to share their thoughts and connect with others.",
+    //         "The app is built using MERN stack and Material UI.",
+    //         "The app also has features like liking posts."
+    //     ],
+    //     image: "/assets/projects/pulspal.png",
     //     skills: [
     //         "React",
-    //         "Tailwind CSS",
+    //         "MongoDB",
+    //         "Node.js",
+    //         "Express",
+    //         "Material UI",
+    //         "Redux"
     //     ],
     //     externals: [
     //         {
     //             name: "Source",
-    //             url: "https://github.com/shari003/QuickCrave",
+    //             url: "https://github.com/shari003/Pulspal",
     //         },
-    //         {
-    //             name: "Website",
-    //             url: "https://quickcrave.netlify.app/",
-    //         }
     //     ]
     // },
+    {
+        id: 1,
+        title: "Unneu",
+        description: [
+            "Contributed to the development of an e-commerce platform for selling new/old sarees, featuring role-based access for buyers and sellers with dynamic product pricing (fixed/negotiable).",
+            "Integrated Cashfree Payments for secure transactions and developed an admin dashboard for sellers to manage listings, track sales, and view financial reports.",
+            "Enabled real-time price negotiations between buyers and sellers via in-app chat, increasing engagement and flexibility in transactions.",
+            "Developed a subscription-based model for Sellers onboarding featuring Cashfree's Recurring Payment Option.",
+            "Developed Client-Side Image Compression Logic to convert any featuring image to WebP format reducing uploading times and improving performance on slower networks."
+        ],
+        image: "/assets/projects/unneu.png",
+        skills: [
+            "TypeScript",
+            "Next.js",
+            "DynamoDB",
+            "AWS SNS",
+            "Zustand",
+            "TailwindCSS",
+        ],
+        externals: [
+            {
+                name: "Website",
+                url: "https://unneu.com/",
+            }
+        ]
+    },
+    {
+        id: 2,
+        title: "Video Transcoding Pipeline",
+        description: [
+            "Designed and implemented a distributed video transcoding system leveraging AWS ECS, Lambda, S3, SQS, and Elasticache for real-time load scaling and high availability.",
+            "Integrated AWS SQS for getting triggered on RAW Video Uploads in S3 and for processing queued processes.",
+            "Utilized Elasticache (valkey) to track active transcoding instances, ensuring optimal resource utilization and concurrency control.",
+            "Integrated FFmpeg within ECS containers to transcode videos into multiple formats and resolutions based on dynamic job parameters.",
+        ],
+        image: "",
+        skills: [
+            "JavaScript",
+            "FFmpeg",
+            "AWS ECS",
+            "Lambda",
+            "S3",
+            "CloudFront",
+            "SQS",
+            "ElasticCache",
+            "EventBridge",
+        ],
+        externals: []
+    },
 ];
 
 export default function getProjects() {
-    return projects;
+    return projects.sort((a, b) => a.id-b.id);
 }
