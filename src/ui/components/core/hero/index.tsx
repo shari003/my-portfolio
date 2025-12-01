@@ -1,5 +1,5 @@
-import {Teko, Signika} from "next/font/google"
-import {motion} from "framer-motion"
+import { Teko, Signika } from "next/font/google"
+import { motion } from "motion/react"
 
 const teko = Teko({
     weight: "400",

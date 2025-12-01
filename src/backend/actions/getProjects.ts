@@ -111,7 +111,7 @@ const projects = [
             "Utilized Elasticache (valkey) to track active transcoding instances, ensuring optimal resource utilization and concurrency control.",
             "Integrated FFmpeg within ECS containers to transcode videos into multiple formats and resolutions based on dynamic job parameters.",
         ],
-        image: "",
+        image: "/assets/projects/video_transcoding.png",
         skills: [
             "JavaScript",
             "FFmpeg",

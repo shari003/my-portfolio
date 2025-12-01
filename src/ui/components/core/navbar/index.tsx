@@ -1,8 +1,9 @@
 'use client';
 import React, {useEffect, useRef, useState} from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import {useRouter} from "next/navigation";
+import { AnimatePresence, motion, Variants } from "motion/react";
+import { useRouter } from "next/navigation";
+
 import { NavItemType } from "@/backend/actions/getNavItems";
 
 type Props = {
@@ -17,7 +18,7 @@ export default function Navbar({show, tabs}: Props) {
     const [isOpen, setIsOpen] = useState(false);
     const hamburgerRef = useRef<HTMLDivElement>(null);
 
-    const blockVariants = {
+    const blockVariants: Variants = {
         initial: {y: -5, opacity: 0},
         falling: {y: 0, opacity: 1, transition: {duration: 0.3, ease: "easeInOut"}}
     }
@@ -45,7 +46,7 @@ export default function Navbar({show, tabs}: Props) {
     return (
         <div className="md:max-w-7xl mx-auto relative">
             <AnimatePresence>
-                {show && (
+                {show ? (
                     <motion.header 
                         className="fixed top-0 left-0 z-50 h-20 w-screen md:w-full px-8 md:px-36 py-4 backdrop-blur-sm"
                         initial={{translateY: "-100%", backdropFilter: "blur(0px)"}}
@@ -118,13 +119,13 @@ export default function Navbar({show, tabs}: Props) {
                                 ))}
                             </motion.div>
                             {/* <motion.div variants={blockVariants}>
-                                <button type="button" className="text-xs text-black bg-slate-200 px-3 py-1.5 rounded-md border-slate-400 hover:bg-black hover:text-white transition-all duration-300 tracking-wide uppercase">
-                                    Hire Me
+                                <button type="button" className="text-xs text-black bg-slate-200 px-3 py-1.5 rounded-md border-slate-400 hover:bg-black hover:text-white transition-all duration-300 tracking-wide uppercase hover:scale-105">
+                                    Resume
                                 </button>
                             </motion.div> */}
                         </motion.nav>
                     </motion.header>
-                )}
+                ) : <></>}
             </AnimatePresence>
         </div>
     )

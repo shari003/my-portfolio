@@ -16,16 +16,24 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_HOST_URI ?? ""),
   title: "Shri Hari | Portfolio",
-  description: "Explore the portfolio of K. Shri Hari, a passionate Software Engineer skilled in MERN stack, backend systems, and intuitive web applications. Discover projects, experience, and contact information.",
-  keywords: ["K. Shri Hari", "Shri Hari", "Software Engineer", "Tutort", "Tutort Academy", "Software Developer", "MERN stack", "Next.js", "portfolio", "web developer", "projects", "backend systems", "frontend developer"],
+  description: "Software Engineer II at Tutort Academy, building SEO-optimized Next.js experiences, scalable LMS platforms, and cloud-native video delivery pipelines on AWS.",
+  keywords: ["K. Shri Hari", "Shri Hari", "Software Engineer", "Tutort", "Tutort Academy", "Software Developer", "MERN stack", "Next.js", "portfolio", "web developer", "projects", "backend systems", "frontend developer", "ec2", "ecs", "sqs", "ses", "aws", "video transcoding", "lms development", "serverless", "mongodb"],
+  authors: [
+    {
+      name: "K. Shri Hari",
+      url: "https://linkedin.com/in/shari003"
+    }
+  ],
   alternates: {
-    canonical: '/',
+    canonical: 'https://shri.is-a.dev',
   },
   openGraph: {
-    title: "Shri Hari | Portfolio",
-    description: "Explore the portfolio of K. Shri Hari, a passionate Software Engineer skilled in MERN stack, backend systems, and intuitive web applications. Discover projects, experience, and contact information.",
     type: "website",
+    locale: "en_IN",
     url: process.env.NEXT_PUBLIC_HOST_URI ?? "",
+    siteName: "Shri Hari | Software Engineering Portfolio",
+    title: "Shri Hari | Portfolio",
+    description: "Full-stack engineer focused on Next.js, Node.js, and AWS, building LMS, content pipelines, and performant web platforms.",
     images: {
       url: "/assets/og/og_image.png",
       width: 1200,
@@ -34,14 +42,27 @@ export const metadata: Metadata = {
     }
   },
   twitter: {
+    card: "summary_large_image",
     title: "Shri Hari | Portfolio",
-    description: "Explore the portfolio of K. Shri Hari, a passionate Software Engineer skilled in MERN stack, backend systems, and intuitive web applications. Discover projects, experience, and contact information.",
+    description: "Full-stack engineer focused on Next.js, Node.js, and AWS, building LMS, content pipelines, and performant web platforms.",
+    creator: "https://x.com/nolimitshri",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    }
   },
   icons: {
     icon: "/favicon.ico",
     apple: "/favicon.ico",
     shortcut: "/favicon.ico",
-  }
+  },
 };
 
 export default function RootLayout({

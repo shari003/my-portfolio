@@ -1,4 +1,4 @@
-import {motion, AnimatePresence} from 'framer-motion'
+import { motion, AnimatePresence, Variants } from 'motion/react';
 
 type Props = {
     show: boolean;
@@ -6,19 +6,19 @@ type Props = {
 
 export default function BlackScreen({show}: Props) {
 
-    const wordVairants = {
+    const wordVairants: Variants = {
         initial: {y: 0, opacity: 1},
         falling: {y: 20, opacity: 0, transition: {duration: 0.3, ease: "easeInOut"}}
     }
 
-    const screenVariants = {
+    const screenVariants: Variants = {
         visible: {translateY: "0%"},
         hidden: {translateY: "100%"},
     }
 
     return (
         <AnimatePresence>
-            {show && (
+            {show ? (
                 <motion.div
                     className='fixed inset-0 bg-black z-50 flex justify-center items-center flex-col'
                     variants={screenVariants}
@@ -42,7 +42,7 @@ export default function BlackScreen({show}: Props) {
                         <motion.span className='text-white text-2xl font-bold' variants={wordVairants}>.dev</motion.span>
                     </motion.h1>
                 </motion.div>
-            )}
+            ) : <></>}
         </AnimatePresence>
     )
 }

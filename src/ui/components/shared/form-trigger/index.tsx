@@ -1,5 +1,5 @@
 'use client';
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react';
 import ContactForm from '../contact-form';
 
 type Props = {
@@ -61,7 +61,7 @@ export default function FormTrigger({triggerTemplate, additionalClasses=""}: Pro
             {isModalOpen && (
                 <div className='fixed top-0 left-0 right-0 bottom-0 backdrop-blur-sm bg-black/20 overflow-y-auto overflow-x-hidden z-[1072] flex justify-center items-center'>
                     <div className='relative mx-auto my-[1.75rem] overflow-y-auto transition-transform duration-300 ease-out flex items-center justify-center max-h-[calc(100vh - 20px)] min-h-[calc(100%-(1.75rem*2))] w-full'>
-                        <div ref={ref} className="relative rounded-lg shadow dark:bg-gray-900 w-11/12 lg:w-5/12 md:w-5/12 sm:w-10/12">
+                        <div ref={ref} className="relative rounded-lg shadow dark:bg-black bg-primary text-black dark:text-primary border border-black dark:border-primary w-11/12 lg:w-5/12 md:w-5/12 sm:w-10/12">
                             <ContactForm onFormClose={onFormClose} />
                         </div>
                     </div>

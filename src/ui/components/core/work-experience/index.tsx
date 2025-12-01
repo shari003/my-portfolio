@@ -1,8 +1,9 @@
-import getWorkExperience from '@/backend/actions/getWorkExperience'
 import React from 'react'
-import {Signika} from "next/font/google"
+import { Signika } from "next/font/google"
 import { ExternalLink } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
+
+import getWorkExperience from '@/backend/actions/getWorkExperience'
 
 const signika = Signika({
     weight: "400",

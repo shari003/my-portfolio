@@ -2,8 +2,9 @@ import { ArrowUpRight, Github, Instagram, Linkedin } from 'lucide-react'
 import React from 'react'
 import { Teko } from 'next/font/google'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
-import FormTrigger from '../../shared/form-trigger'
+import { motion } from 'motion/react'
+
+import FormTrigger from '@/ui/components/shared/form-trigger'
 
 const teko = Teko({
     weight: '400',

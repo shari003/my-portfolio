@@ -1,8 +1,10 @@
 import React from 'react';
-import {Signika} from 'next/font/google';
-import ProjectCard from './project-card';
+import { Signika } from 'next/font/google';
+
 import getProjects from '@/backend/actions/getProjects';
-import FormTrigger from '../../shared/form-trigger';
+
+import ProjectCard from '@/ui/components/core/projects/project-card';
+import FormTrigger from '@/ui/components/shared/form-trigger';
 
 const signika = Signika({
     weight: '400',
@@ -22,7 +24,7 @@ export default function Projects() {
                     </p>
                     <FormTrigger 
                         triggerTemplate={
-                            <button type='button' className='hidden md:block border-2 border-slate-500 px-9 py-10 rounded-full'>
+                            <button type='button' className='hidden md:block border-2 border-slate-500 hover:bg-primary hover:text-black transition-colors duration-150 ease-in-out px-9 py-10 rounded-full'>
                                 <span className='font-semibold'>
                                     GET IN TOUCH
                                 </span>
