@@ -1,13 +1,16 @@
 "use client";
+
 import React, { useState, useEffect } from 'react'
-import BlackScreen from '../../core/black-screen'
-import Navbar from '../../core/navbar';
-import Hero from '../../core/hero';
-import About from '../../core/about';
-import Projects from '../../core/projects';
-import ContactMe from '../../core/contact-me';
-import WorkExperience from '../../core/work-experience';
+
 import getNavItems, { PageType } from '@/backend/actions/getNavItems';
+
+import BlackScreen from '@/ui/components/core/black-screen'
+import Navbar from '@/ui/components/core/navbar';
+import Hero from '@/ui/components/core/hero';
+import About from '@/ui/components/core/about';
+import Projects from '@/ui/components/core/projects';
+import ContactMe from '@/ui/components/core/contact-me';
+import WorkExperience from '@/ui/components/core/work-experience';
 
 export default function Home() {
 

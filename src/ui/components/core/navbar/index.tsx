@@ -1,5 +1,5 @@
 'use client';
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, Variants } from "motion/react";
 import { useRouter } from "next/navigation";
@@ -11,17 +11,67 @@ type Props = {
     tabs: NavItemType[];
 }
 
-export default function Navbar({show, tabs}: Props) {
-
+export default function Navbar({ show, tabs }: Props) {
     const router = useRouter();
-
     const [isOpen, setIsOpen] = useState(false);
     const hamburgerRef = useRef<HTMLDivElement>(null);
 
-    const blockVariants: Variants = {
-        initial: {y: -5, opacity: 0},
-        falling: {y: 0, opacity: 1, transition: {duration: 0.3, ease: "easeInOut"}}
-    }
+    // EXACT same easing as your BlackScreen for perfect synchronization
+    const customEase = [0.76, 0, 0.24, 1] as const;
+
+    // Main header dropping down 
+    const headerVariants: Variants = {
+        initial: { y: "-100%", opacity: 0 },
+        animate: {
+            y: "0%",
+            opacity: 1,
+            transition: {
+                duration: 1,
+                ease: customEase,
+                // Waits slightly so it drops down right as the splash screen slides up
+                delay: 0.6
+            }
+        },
+        exit: {
+            y: "-100%",
+            opacity: 0,
+            transition: { duration: 0.4, ease: customEase }
+        }
+    };
+
+    // Controls the staggering of the inner items
+    const navVariants: Variants = {
+        initial: { opacity: 0 },
+        animate: {
+            opacity: 1,
+            transition: { staggerChildren: 0.1, delayChildren: 0.7 }
+        }
+    };
+
+    // The individual items (logo, links, hamburger)
+    const itemVariants: Variants = {
+        initial: { y: -10, opacity: 0, filter: "blur(4px)" },
+        animate: { y: 0, opacity: 1, filter: "blur(0px)", transition: { duration: 0.5, ease: "easeOut" } }
+    };
+
+    // Smooth blur reveal for the mobile dropdown menu
+    const menuVariants: Variants = {
+        hidden: { opacity: 0, y: -10, scale: 0.95, filter: "blur(4px)" },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            filter: "blur(0px)",
+            transition: { duration: 0.4, ease: customEase }
+        },
+        exit: {
+            opacity: 0,
+            y: -5,
+            scale: 0.95,
+            filter: "blur(4px)",
+            transition: { duration: 0.3, ease: customEase }
+        }
+    };
 
     function handleClick() {
         setIsOpen(prev => !prev);
@@ -39,94 +89,100 @@ export default function Navbar({show, tabs}: Props) {
     }
 
     useEffect(() => {
-        document.addEventListener("click", handleOutsideClick);
-        return () => document.removeEventListener("click", handleOutsideClick);
+        // mousedown is slightly more reliable than click for outside-click logic
+        document.addEventListener("mousedown", handleOutsideClick);
+        return () => document.removeEventListener("mousedown", handleOutsideClick);
     }, []);
 
     return (
-        <div className="md:max-w-7xl mx-auto relative">
-            <AnimatePresence>
-                {show ? (
-                    <motion.header 
-                        className="fixed top-0 left-0 z-50 h-20 w-screen md:w-full px-8 md:px-36 py-4 backdrop-blur-sm"
-                        initial={{translateY: "-100%", backdropFilter: "blur(0px)"}}
-                        animate={{translateY: "0%", backdropFilter: "blur(5px)"}}
-                        exit={{translateY: "-100%", backdropFilter: "blur(0px)"}}
-                        transition={{duration: 0.2, ease: "easeInOut"}}
+        <AnimatePresence>
+            {show && (
+                <motion.header
+                    className="fixed top-0 left-0 z-40 w-full px-6 py-4 md:px-12 pointer-events-none"
+                    variants={headerVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                >
+                    {/* pointer-events-none on wrapper prevents invisible blocking. pointer-events-auto applied here. */}
+                    <motion.nav
+                        className="relative flex items-center justify-between p-3 mx-auto bg-white/80 backdrop-blur-xl border border-zinc-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl pointer-events-auto md:max-w-6xl"
+                        variants={navVariants}
                     >
-                        <motion.nav 
-                            className="bg-white h-16 rounded-md flex items-center justify-between p-4 shadow-md"
-                            initial="initial"
-                            animate="falling"
-                            transition={{
-                                staggerChildren: 0.3,
-                                duration: 0.4,
-                                ease: "easeInOut"
-                            }}
-                        >   
-                            <motion.div variants={blockVariants} ref={hamburgerRef} className="block md:hidden relative">
-                                <button onClick={handleClick} className="flex flex-col justify-center items-center">
-                                    <span className={`bg-black block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`} >
-                                    </span>
-                                    <span className={`bg-black block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isOpen ? 'opacity-0' : 'opacity-100'}`} >
-                                    </span>
-                                    <span className={`bg-black block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'}`} >
-                                    </span>    
-                                </button>
+                        {/* 1. Mobile Hamburger */}
+                        <motion.div variants={itemVariants} ref={hamburgerRef} className="block md:hidden relative">
+                            <button
+                                onClick={handleClick}
+                                className="flex flex-col justify-center items-center w-10 h-10 rounded-full hover:bg-zinc-100 transition-colors"
+                            >
+                                <span className={`bg-zinc-900 block transition-all duration-300 ease-out h-[2px] w-5 rounded-sm ${isOpen ? 'rotate-45 translate-y-[5px]' : '-translate-y-1'}`} />
+                                <span className={`bg-zinc-900 block transition-all duration-300 ease-out h-[2px] w-5 rounded-sm my-[3px] ${isOpen ? 'opacity-0' : 'opacity-100'}`} />
+                                <span className={`bg-zinc-900 block transition-all duration-300 ease-out h-[2px] w-5 rounded-sm ${isOpen ? '-rotate-45 -translate-y-[5px]' : 'translate-y-1'}`} />
+                            </button>
+
+                            <AnimatePresence>
                                 {isOpen && (
-                                    <motion.div 
-                                        className="absolute z-50 top-12 -left-4 w-40 shadow-md rounded-md p-4 bg-white" 
-                                        initial={{opacity: 0, y: -5}} 
-                                        animate={{opacity: 1, y: 0}} 
-                                        transition={{duration: 0.3, ease: "easeInOut"}} 
-                                        exit={{
-                                            opacity: 0,
-                                            y: -5,
-                                            transition: {duration: 0.3, ease: "easeInOut"}
-                                        }}
+                                    <motion.div
+                                        variants={menuVariants}
+                                        initial="hidden"
+                                        animate="visible"
+                                        exit="exit"
+                                        className="absolute top-16 -left-3 w-64 p-2 bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] rounded-2xl overflow-hidden z-40"
                                     >
-                                        <menu className="flex flex-col space-y-4 bg-white w-full">
-                                            {tabs.map(tab => (
-                                                <li key={tab.id} onClick={() => handleNavigate(tab.to)} className="text-black font-semibold tracking-wider uppercase text-sm">
-                                                    {tab.label}
-                                                </li>
+                                        <ul className="flex flex-col space-y-1">
+                                            {tabs.map((tab) => (
+                                                <motion.li key={tab.id} variants={itemVariants}>
+                                                    <button
+                                                        onClick={() => handleNavigate(tab.to)}
+                                                        className="w-full text-left px-4 py-3.5 text-xs font-bold tracking-widest text-gray-400 uppercase rounded-xl hover:text-white hover:bg-[#34d399]/10 hover:translate-x-1 transition-all duration-300 flex items-center justify-between group"
+                                                    >
+                                                        {tab.label}
+                                                        <span className="opacity-0 group-hover:opacity-100 text-[#34d399] transition-opacity duration-300">
+                                                            &rarr;
+                                                        </span>
+                                                    </button>
+                                                </motion.li>
                                             ))}
-                                        </menu>
+                                        </ul>
                                     </motion.div>
                                 )}
-                            </motion.div>
-                            <motion.div variants={blockVariants}>
-                                <Link href="/" className="font-medium hover:bg-slate-200 hover:text-black bg-black text-white transition-colors duration-300 px-2 py-1 rounded-md outline-none">
-                                    <span>{"/"}shri</span>
-                                    <span className="font-extrabold italic">.is-a.dev</span>
-                                </Link>
-                            </motion.div>
-                            <motion.div className="hidden md:flex space-x-4 text-xs uppercase" variants={blockVariants}>
-                                {tabs.map((tab, index) => (
-                                    <React.Fragment key={tab.id}>
-                                        <button type="button" onClick={() => handleNavigate(tab.to)} className="uppercase relative group text-black font-semibold tracking-wider">
-                                            <span className="inline-block">
-                                                <span className="invisible font-semibold">{tab.label}</span>
-                                                <span className="absolute left-0 top-0 transition-all duration-300 group-hover:font-semibold group-hover:text-black/90">
-                                                    {tab.label}
-                                                </span>
-                                            </span>
-                                            <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 cursor-default"></span>
-                                        </button>
-                                            
-                                        {index < tabs.length - 1 && <span className="text-gray-400 cursor-default">/</span>}
-                                    </React.Fragment>
-                                ))}
-                            </motion.div>
-                            {/* <motion.div variants={blockVariants}>
-                                <button type="button" className="text-xs text-black bg-slate-200 px-3 py-1.5 rounded-md border-slate-400 hover:bg-black hover:text-white transition-all duration-300 tracking-wide uppercase hover:scale-105">
-                                    Resume
-                                </button>
-                            </motion.div> */}
-                        </motion.nav>
-                    </motion.header>
-                ) : <></>}
-            </AnimatePresence>
-        </div>
-    )
+                            </AnimatePresence>
+                        </motion.div>
+
+                        {/* 2. Brand Logo */}
+                        <motion.div variants={itemVariants}>
+                            <Link href="/" className="group flex items-center outline-none px-2">
+                                <span className="flex items-center justify-center px-2 py-1 text-xs font-bold text-white bg-zinc-900 rounded-md group-hover:bg-zinc-700 transition-colors duration-300">
+                                    /shri
+                                </span>
+                                <span className="text-sm font-bold text-zinc-900 italic tracking-tight">
+                                    .is-a.dev
+                                </span>
+                            </Link>
+                        </motion.div>
+
+                        {/* 3. Desktop Links */}
+                        <motion.div className="hidden md:flex items-center space-x-6 pr-4" variants={navVariants}>
+                            {tabs.map((tab, index) => (
+                                <motion.div key={tab.id} variants={itemVariants} className="flex items-center space-x-6">
+                                    <button
+                                        type="button"
+                                        onClick={() => handleNavigate(tab.to)}
+                                        className="relative text-[11px] font-bold tracking-widest text-zinc-600 uppercase transition-colors hover:text-zinc-900 group py-2"
+                                    >
+                                        {tab.label}
+                                        {/* Styled with the same emerald-400 as your splash screen */}
+                                        <span className="absolute bottom-0 left-0 w-full h-[2px] bg-emerald-400 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out rounded-full" />
+                                    </button>
+                                    {index < tabs.length - 1 && (
+                                        <span className="text-zinc-400 select-none text-xs">/</span>
+                                    )}
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </motion.nav>
+                </motion.header>
+            )}
+        </AnimatePresence>
+    );
 }

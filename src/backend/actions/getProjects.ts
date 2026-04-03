@@ -26,32 +26,32 @@ const projects = [
             }
         ]
     },
-    {
-        id: 4,
-        title: "Biryani Mowa",
-        description: [
-            "Biryani Mowa is a food delivery app that allows users to order food online.",
-            "The app also has features like adding items to cart and placing orders with Apply Coupon feature.",
-            "The app is built using Next.js and Tailwind CSS.",
-        ],
-        image: '/assets/projects/biryanimowa.png',
-        skills: [
-            "React",
-            "Next.js",
-            "Tailwind CSS",
-            "Redux",
-        ],
-        externals: [
-            {
-                name: "Source",
-                url: "https://github.com/shari003/Biryani-Mowa-Official",
-            },
-            {
-                name: "Website",
-                url: "https://biryani-mowa-official.vercel.app/",
-            }
-        ]
-    },
+    // {
+    //     id: 4,
+    //     title: "Biryani Mowa",
+    //     description: [
+    //         "Biryani Mowa is a food delivery app that allows users to order food online.",
+    //         "The app also has features like adding items to cart and placing orders with Apply Coupon feature.",
+    //         "The app is built using Next.js and Tailwind CSS.",
+    //     ],
+    //     image: '/assets/projects/biryanimowa.png',
+    //     skills: [
+    //         "React",
+    //         "Next.js",
+    //         "Tailwind CSS",
+    //         "Redux",
+    //     ],
+    //     externals: [
+    //         {
+    //             name: "Source",
+    //             url: "https://github.com/shari003/Biryani-Mowa-Official",
+    //         },
+    //         {
+    //             name: "Website",
+    //             url: "https://biryani-mowa-official.vercel.app/",
+    //         }
+    //     ]
+    // },
     // {
     //     id: 5,
     //     title: "Pulspal",
@@ -116,12 +116,12 @@ const projects = [
             "JavaScript",
             "FFmpeg",
             "AWS ECS",
-            "Lambda",
-            "S3",
-            "CloudFront",
-            "SQS",
-            "ElasticCache",
-            "EventBridge",
+            "AWS Lambda",
+            "AWS S3",
+            "AWS CloudFront",
+            "AWS SQS",
+            "AWS ElasticCache",
+            "AWS EventBridge",
         ],
         externals: []
     },

@@ -31,3 +31,7 @@ body {
   scrollbar-width: none;
   /* Firefox */
 }
+
+#x_handle {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(202%) hue-rotate(312deg) brightness(113%) contrast(100%);
+}

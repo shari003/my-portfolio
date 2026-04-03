@@ -1,6 +1,8 @@
 'use client';
 import React, {useEffect, useRef, useState} from 'react';
-import ContactForm from '../contact-form';
+import { AnimatePresence, motion } from 'motion/react';
+
+import ContactForm from '@/ui/components/shared/contact-form';
 
 type Props = {
     triggerTemplate: React.JSX.Element;
@@ -33,6 +35,11 @@ export default function FormTrigger({triggerTemplate, additionalClasses=""}: Pro
             body.style.removeProperty('position');
         }
 
+        return () => {
+            body.style.removeProperty('overflow');
+            body.style.removeProperty('position');
+        }
+
     }, [isModalOpen])
 
     useEffect(() => {
@@ -58,15 +65,23 @@ export default function FormTrigger({triggerTemplate, additionalClasses=""}: Pro
                 {triggerTemplate}
             </div>   
 
-            {isModalOpen && (
-                <div className='fixed top-0 left-0 right-0 bottom-0 backdrop-blur-sm bg-black/20 overflow-y-auto overflow-x-hidden z-[1072] flex justify-center items-center'>
-                    <div className='relative mx-auto my-[1.75rem] overflow-y-auto transition-transform duration-300 ease-out flex items-center justify-center max-h-[calc(100vh - 20px)] min-h-[calc(100%-(1.75rem*2))] w-full'>
-                        <div ref={ref} className="relative rounded-lg shadow dark:bg-black bg-primary text-black dark:text-primary border border-black dark:border-primary w-11/12 lg:w-5/12 md:w-5/12 sm:w-10/12">
-                            <ContactForm onFormClose={onFormClose} />
+            <AnimatePresence>
+                {isModalOpen && (
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 z-[1072] flex items-center justify-center bg-black/60 backdrop-blur-md p-4 sm:p-6 overflow-y-auto"
+                    >
+                        <div className="relative w-full flex items-center justify-center min-h-full py-10">
+                            <div ref={ref} className="w-full max-w-2xl mx-auto">
+                                <ContactForm onFormClose={onFormClose} />
+                            </div>
                         </div>
-                    </div>
-                </div>
-            )}
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </>
     )
 }

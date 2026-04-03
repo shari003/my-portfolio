@@ -1,7 +1,7 @@
 const experience = [
     {
         id: 5,
-        title: 'Software Engineer II',
+        title: 'Software Engineer I',
         company: {
             title: 'Tutort Academy LLP',
             url: 'https://tutort.net/',

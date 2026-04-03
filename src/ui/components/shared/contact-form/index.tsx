@@ -1,5 +1,6 @@
 import { useState, FormEvent, useEffect } from 'react';
-import { Send, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
+import { AlertCircle, CheckCircle2, Loader2, Send, X } from 'lucide-react';
 
 import sendEmail from '@/backend/utils/sendEmail';
 
@@ -96,60 +97,125 @@ export default function ContactForm({ onFormClose }: Props) {
     }, [success]);
 
     return (
-        <>
-            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                <h3 className="text-xl font-semibold text-black dark:text-primary">
-                    Contact
+        <motion.div 
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full bg-[#0a0a0a] border border-white/10 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col relative"
+        >
+            {/* Header */}
+            <div className="flex items-center justify-between p-5 md:p-6 border-b border-white/10 bg-white/[0.02]">
+                <h3 className="text-xl font-bold text-gray-100 tracking-wide">
+                    Let&apos;s Connect
                 </h3>
-                <button type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal" onClick={onFormClose}>
+                <button 
+                    type="button" 
+                    onClick={onFormClose}
+                    className="text-gray-500 hover:text-white hover:bg-white/10 rounded-full p-2 transition-all duration-200 focus:outline-none"
+                    aria-label="Close modal"
+                >
                     <X size={20} />
-                    <span className="sr-only">Close modal</span>
                 </button>
             </div>
 
-            <div className="p-4 md:p-5 space-y-4">
-                <div className='grid md:grid-cols-2 gap-4'>
-                    <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-primary">Name*</label>
-                        <input type="text" id="name" name="name" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300" value={fields.from_name} onChange={e => handleSetFields(e.target.value, 'FROM_NAME')} placeholder="What should I call you?" required />
+            {/* Form Body */}
+            <div className="p-5 md:p-6 space-y-6 relative">
+                
+                {/* Status Messages overlay */}
+                <AnimatePresence>
+                    {(success || error) && (
+                        <motion.div 
+                            initial={{ opacity: 0, height: 0, marginBottom: 0 }}
+                            animate={{ opacity: 1, height: 'auto', marginBottom: 24 }}
+                            exit={{ opacity: 0, height: 0, marginBottom: 0 }}
+                            className="overflow-hidden"
+                        >
+                            <div className={`flex items-center gap-3 p-4 rounded-xl border ${success ? 'bg-[#34d399]/10 border-[#34d399]/30 text-[#34d399]' : 'bg-red-500/10 border-red-500/30 text-red-400'}`}>
+                                {success ? <CheckCircle2 size={20} className="shrink-0" /> : <AlertCircle size={20} className="shrink-0" />}
+                                <p className="text-sm font-medium">
+                                    {success ? "Message sent successfully! I'll get back to you soon." : error}
+                                </p>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                    <div className="flex flex-col gap-1.5">
+                        <label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-gray-400">Name <span className="text-[#34d399]">*</span></label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3.5 text-gray-200 placeholder-gray-600 focus:outline-none focus:border-[#34d399]/50 focus:bg-white/[0.02] transition-all duration-300" 
+                            style={{ boxShadow: 'focus:0 0 0 1px rgba(52,211,153,0.3)' }}
+                            value={fields.from_name} 
+                            onChange={e => handleSetFields(e.target.value, 'FROM_NAME')} 
+                            placeholder="What should I call you?" 
+                            required 
+                        />
                     </div>
-                    <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-primary">Email*</label>
-                        <input type="email" id="email" name="email" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300" value={fields.from_email} onChange={e => handleSetFields(e.target.value, 'FROM_EMAIL')} placeholder="Where can I reach you?" required />
+                    <div className="flex flex-col gap-1.5">
+                        <label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-gray-400">Email <span className="text-[#34d399]">*</span></label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3.5 text-gray-200 placeholder-gray-600 focus:outline-none focus:border-[#34d399]/50 focus:bg-white/[0.02] transition-all duration-300" 
+                            value={fields.from_email} 
+                            onChange={e => handleSetFields(e.target.value, 'FROM_EMAIL')} 
+                            placeholder="Where can I reach you?" 
+                            required 
+                        />
                     </div>
                 </div>
-                <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-primary">Message*</label>
-                    <textarea id="message" name="message" rows={4} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300" value={fields.message} onChange={e => handleSetFields(e.target.value, 'MESSAGE')} placeholder=". . . . ." required></textarea>
+                <div className="flex flex-col gap-1.5">
+                    <label htmlFor="message" className="text-xs font-bold uppercase tracking-widest text-gray-400">Message <span className="text-[#34d399]">*</span></label>
+                    <textarea 
+                        id="message" 
+                        rows={5} 
+                        className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3.5 text-gray-200 placeholder-gray-600 focus:outline-none focus:border-[#34d399]/50 focus:bg-white/[0.02] transition-all duration-300 resize-none" 
+                        value={fields.message} 
+                        onChange={e => handleSetFields(e.target.value, 'MESSAGE')} 
+                        placeholder="Tell me about your project..." 
+                        required
+                    />
                 </div>
-
-                {error && (
-                    <div>
-                        <p className="text-red-500 text-sm">{error}</p>
-                    </div>
-                )}
-
-                {success && (
-                    <div>
-                        <p className="text-green-500 text-sm">Email sent successfully!</p>
-                    </div>
-                )}
             </div>
 
-            <div className="flex justify-between items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <div>
-                    <button type='button' onClick={handleMailRedirect} className='flex items-center gap-2 py-2.5 px-5 text-sm font-medium focus:outline-none rounded-lg border border-primary/80 hover:bg-primary text-primary hover:text-black transition-colors duration-150'>
-                        Mail me
-                        <Send size={18} />
+            {/* Footer */}
+            <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-4 p-5 md:p-6 border-t border-white/10 bg-white/[0.01]">
+                <button 
+                    type="button" 
+                    onClick={handleMailRedirect} 
+                    className="w-full sm:w-auto flex justify-center items-center gap-2 py-2.5 px-5 text-sm font-semibold tracking-wider text-gray-400 bg-white/[0.03] border border-white/10 hover:border-[#34d399]/30 hover:bg-[#34d399]/10 hover:text-white rounded-full transition-all duration-300"
+                >
+                    <Send size={16} className="text-gray-500 group-hover:text-[#34d399]" />
+                    MAIL ME INSTEAD
+                </button>
+                
+                <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
+                    <button 
+                        type="button" 
+                        onClick={onFormClose}
+                        className="py-2.5 px-5 text-sm font-semibold text-gray-400 hover:text-white transition-colors duration-200"
+                    >
+                        Cancel
                     </button>
-                </div>
-                <div className='flex items-center gap-4'>
-                    <button data-modal-hide="default-modal" type="button" className="py-2.5 px-5 text-sm font-medium focus:outline-none rounded-lg border border-red-500 text-red-500 hover:bg-red-500 hover:text-primary transition-colors duration-150" onClick={onFormClose}>Cancel</button>
-                    <button data-modal-hide="default-modal" type="button" onClick={handleFormSubmit} className="focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center border border-primary bg-primary text-black hover:bg-transparent hover:text-primary transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50" disabled={fields.from_name === "" || fields.from_email === "" || fields.message === ""}>
-                        {isLoading ? 'Sending...' : 'Submit'}
+                    <button 
+                        type="button" 
+                        onClick={handleFormSubmit} 
+                        disabled={!fields.from_name || !fields.from_email || !fields.message || isLoading}
+                        className="relative flex justify-center items-center gap-2 font-bold tracking-widest rounded-full text-sm px-8 py-3 bg-[#34d399]/10 text-[#34d399] border border-[#34d399]/30 hover:bg-[#34d399]/20 hover:shadow-[0_0_20px_rgba(52,211,153,0.3)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none"
+                    >
+                        {isLoading ? (
+                            <>
+                                <Loader2 size={18} className="animate-spin" />
+                                SENDING...
+                            </>
+                        ) : 'SUBMIT'}
                     </button>
                 </div>
             </div>
-        </>
+        </motion.div>
     )
 }
