@@ -5,11 +5,11 @@ export interface NavItemType {
 }
 
 const mainPageNavItems = [
-    {
-        id: 1,
-        label: "Home",
-        to: "/"
-    },
+    // {
+    //     id: 1,
+    //     label: "Home",
+    //     to: "/"
+    // },
     {
         id: 2,
         label: "About",

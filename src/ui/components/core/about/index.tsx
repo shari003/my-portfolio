@@ -77,7 +77,7 @@ export default function About() {
 								Hi, I am <span className="text-zinc-100 font-semibold">K. Shri Hari</span>, a passionate Software Engineer skilled in crafting intuitive web applications and scalable backend systems. With expertise in the <span className="text-zinc-200">MERN stack</span>, <span className="text-zinc-200">TypeScript</span>, and <span className="text-zinc-200">AWS</span>, I thrive on building impactful solutions that drive user engagement and streamline processes.
 							</p>
 							<p>
-								In my current role, I&apos;ve led the development of Tutort&apos;s website and admin portal, integrated advanced features like a <span className="text-emerald-400/90">coding engine</span> and contest modules, and created personalized mentor session tools to enhance user experiences. My prior experience includes building CRM systems with comprehensive functionality, showcasing my ability to manage both frontend and backend development seamlessly.
+								In my current role, I&apos;ve led the development of Tutort&apos;s website and LMS Portal, integrated advanced features like a <span className="text-emerald-400/90">coding engine</span> and contest modules, and created personalized mentor session tools to enhance user experiences. My prior experience includes building CRM systems with comprehensive functionality, showcasing my ability to manage both frontend and backend development seamlessly.
 							</p>
 							<p>
 								I&apos;m always eager to explore emerging technologies and deliver solutions that align with strategic goals. Let&apos;s connect and create something extraordinary!

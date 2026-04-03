@@ -6,7 +6,6 @@ import getNavItems, { PageType } from '@/backend/actions/getNavItems';
 
 import BlackScreen from '@/ui/components/core/black-screen'
 import Navbar from '@/ui/components/core/navbar';
-import Hero from '@/ui/components/core/hero';
 import About from '@/ui/components/core/about';
 import Projects from '@/ui/components/core/projects';
 import ContactMe from '@/ui/components/core/contact-me';
@@ -32,7 +31,6 @@ export default function Home() {
         <div className='relative bg-slate-200'>
             <BlackScreen show={showBlackScreen} />
             <Navbar show={showNavbar} tabs={tabs} />
-            <Hero />
             <About />
             <Projects />
             <WorkExperience />

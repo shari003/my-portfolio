@@ -168,11 +168,11 @@ export default function Navbar({ show, tabs }: Props) {
                                     <button
                                         type="button"
                                         onClick={() => handleNavigate(tab.to)}
-                                        className="relative text-[11px] font-bold tracking-widest text-zinc-600 uppercase transition-colors hover:text-zinc-900 group py-2"
+                                        className="relative text-[11px] font-bold tracking-widest text-zinc-700 uppercase transition-colors hover:text-zinc-900 group py-2"
                                     >
                                         {tab.label}
                                         {/* Styled with the same emerald-400 as your splash screen */}
-                                        <span className="absolute bottom-0 left-0 w-full h-[2px] bg-emerald-400 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out rounded-full" />
+                                        <span className="absolute bottom-1 left-0 w-full h-[2px] bg-emerald-400 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out rounded-full" />
                                     </button>
                                     {index < tabs.length - 1 && (
                                         <span className="text-zinc-400 select-none text-xs">/</span>
